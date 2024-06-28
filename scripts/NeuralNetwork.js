@@ -40,7 +40,7 @@ function preprocessDrawing(paintField) {
  * @param {Object[]} trainData - Массив объектов, содержащих данные рисунков и их метки.
  * @param {number[][]} trainData[].paintField - Рисунок в виде массива пикселей 10x10.
  * @param {number[]} trainData[].label - Метка класса (0 или 1).
- * @returns {Promise<void>} Promice, который завершается после завершения обучения модели.
+ * @returns {Promise<void>} Promise, который завершается после завершения обучения модели.
  */
 async function trainModel(trainData) {
   const xs = tf.concat(trainData.map((d) => preprocessDrawing(d.paintField)));
