@@ -51,12 +51,12 @@ async function trainModel(trainData) {
     callbacks: {
       onEpochEnd: (epoch, logs) => {
         console.log(
-          `Epoch ${epoch}: loss = ${logs.loss.toFixed(4)}, accuracy = ${logs.acc.toFixed(4)}`
+          `Эпоха ${epoch}: потеря = ${logs.loss.toFixed(4)}, точность = ${logs.acc.toFixed(4)}`
         );
       },
     },
   });
 
-  console.log("Model training complete");
+  console.log("Обучение модели завершено");
 }
 
