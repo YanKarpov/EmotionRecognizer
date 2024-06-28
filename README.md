@@ -22,8 +22,8 @@
    git clone https://github.com/yourusername/EmotionRecognizer.git
    cd EmotionRecognizer
 
-2. **Открытие приложения**
-   Откройте `index.html` в вашем любимом веб-браузере.
+2. **Откройте `index.html` в вашем любимом веб-браузере.**
+   
 
 ## Структура проекта
 
