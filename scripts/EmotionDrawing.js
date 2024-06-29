@@ -1,7 +1,3 @@
-/**
- * Элементы управления и их обработчики для взаимодействия с пользователем на веб-странице.
- */
-
 // Получение элементов canvas и кнопок
 const canvas = document.querySelector("#paintField"); // Элемент canvas, на котором происходит рисование
 const clearBtn = document.querySelector("#clear"); // Кнопка для очистки поля
@@ -66,11 +62,19 @@ function drawSquare(row, column, color) {
  * @param {MouseEvent} event - Событие мыши
  */
 function draw(event) {
-  const rowIndex = Math.floor(event.offsetY / 40); // Определение строки по положению мыши
-  const columnIndex = Math.floor(event.offsetX / 40); // Определение столбца по положению мыши
+  // Ограничиваем координаты курсора в пределах холста
+  const offsetX = Math.min(Math.max(event.offsetX, 0), 399);
+  const offsetY = Math.min(Math.max(event.offsetY, 0), 399);
+
+  const rowIndex = Math.floor(offsetY / 40); // Определение строки по положению мыши
+  const columnIndex = Math.floor(offsetX / 40); // Определение столбца по положению мыши
   const arrayIndex = rowIndex * 10 + columnIndex; // Индекс в массиве paintField
-  paintField[arrayIndex] = true; // Установка значения true для выбранной ячейки
-  drawSquare(rowIndex, columnIndex, "green"); // Рисование зеленого квадрата в выбранной ячейке
+
+  // Проверяем, не выходит ли индекс за границы массива
+  if (arrayIndex >= 0 && arrayIndex < paintField.length) {
+    paintField[arrayIndex] = true; // Установка значения true для выбранной ячейки
+    drawSquare(rowIndex, columnIndex, "green"); // Рисование зеленого квадрата в выбранной ячейке
+  }
 }
 
 /**
@@ -145,3 +149,4 @@ trainBtn.addEventListener("click", () => {
 // Инициализация интерфейса и canvas при загрузке страницы
 updateInterface(); // Обновление интерфейса
 clearCanvas(); // Очистка canvas и рисование сетки
+
