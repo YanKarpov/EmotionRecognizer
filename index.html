@@ -1,29 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Emotion Classifier</title>
+  <title>Классификатор Эмоций</title>
   <link rel="stylesheet" href="css/styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
 </head>
 <body>
   <header>
-    <h1 class="title">Emotion Classifier</h1>
+    <h1 class="title">Классификатор Эмоций</h1>
   </header>
   <div id="wrapper">
     <canvas width="400" height="400" id="paintField"></canvas>
     <div id="controls">
-      <button class="control" id="happy"></button>
-      <button class="control" id="sad"></button>
-      <button class="control" id="angry"></button>
-      <button class="control" id="surprised"></button>
+      <button class="control" id="happy">😀</button>
+      <button class="control" id="sad">🙁</button>
+      <button class="control" id="angry">😡</button>
+      <button class="control" id="surprised">😲</button>
       <button class="control" id="clear">Очистить холст</button>
       <button class="control" id="train">Обучить</button>
       <button class="control" disabled id="predict">Предсказать</button>
     </div>
   </div>
-  <script src="scripts/NeuralNetwork.js"></script>
   <script src="scripts/EmotionDrawing.js"></script>
 </body>
 </html>
