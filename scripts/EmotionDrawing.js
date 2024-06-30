@@ -100,27 +100,35 @@ surprisedBtn.addEventListener("click", () => {
 });
 
 predictBtn.addEventListener("click", () => {
-  const inputTensor = preprocessDrawing(paintField);
-  const prediction = model.predict(inputTensor);
-  const [happiness, sadness, anger, surprise] = prediction.dataSync();
-
-  const emotions = ["счастливое", "грустное", "злое", "удивленное"];
-  const scores = [happiness, sadness, anger, surprise];
-  const maxIndex = scores.indexOf(Math.max(...scores));
-
-  alert(
-    `Я думаю это ${emotions[maxIndex]} лицо!\nСчастье: ${Math.round(happiness * 100)}% Грусть: ${Math.round(sadness * 100)}% Злость: ${Math.round(anger * 100)}% Удивление: ${Math.round(surprise * 100)}%`
-  );
+  fetch("http://127.0.0.1:5000/predict", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ paintField })
+  })
+  .then(response => response.json())
+  .then(data => {
+    alert(data.message);
+  })
+  .catch(error => console.error('Error:', error));
 });
 
 trainBtn.addEventListener("click", () => {
-  trainModel(trainData).then(() => {
-    predictBtn.disabled = false;
+  fetch("http://127.0.0.1:5000/train", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ trainData })
+  })
+  .then(response => response.json())
+  .then(data => {
     alert("Я обучился!");
-  });
+    predictBtn.disabled = false;
+  })
+  .catch(error => console.error('Error:', error));
 });
 
 updateInterface();
 clearCanvas();
-
-
