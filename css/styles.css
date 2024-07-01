@@ -22,7 +22,6 @@ header {
 
 #wrapper {
   display: flex;
-  flex-direction: column;
   align-items: center;
   padding: 20px;
   background-color: #ffffff;
@@ -34,15 +33,20 @@ header {
   border: 2px solid #333;
   background-color: #fff;
   cursor: crosshair;
-  margin-bottom: 20px;
+  margin: 0 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#controls {
+#left-controls, #right-controls {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  gap: 40px;
+}
+
+#bottom-controls {
+  display: flex;
   gap: 10px;
+  margin-top: 20px;
 }
 
 .control {
@@ -54,6 +58,7 @@ header {
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
   border-radius: 5px;
+  text-align: center;
 }
 
 .control:hover {
@@ -68,6 +73,13 @@ header {
 .control:disabled {
   background-color: #9e9e9e;
   cursor: not-allowed;
+}
+
+.control.small {
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  font-size: 20px;
 }
 
 #happy {
@@ -118,4 +130,31 @@ header {
 #surprised:active {
   background-color: #f57c00;
 }
+
+#save {
+  background-color: #673ab7;
+}
+
+#save:hover {
+  background-color: #5e35b1;
+}
+
+#save:active {
+  background-color: #512da8;
+}
+
+#load {
+  background-color: #009688;
+}
+
+#load:hover {
+  background-color: #00897b;
+}
+
+#load:active {
+  background-color: #00796b;
+}
+
+
+
 
