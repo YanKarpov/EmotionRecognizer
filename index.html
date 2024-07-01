@@ -14,13 +14,15 @@
   <div id="wrapper">
     <canvas width="400" height="400" id="paintField"></canvas>
     <div id="controls">
-      <button class="control" id="happy"></button>
-      <button class="control" id="sad"></button>
-      <button class="control" id="angry"></button>
-      <button class="control" id="surprised"></button>
+      <button class="control" id="happy">😀 0</button>
+      <button class="control" id="sad">🙁 0</button>
+      <button class="control" id="angry">😡 0</button>
+      <button class="control" id="surprised">😲 0</button>
       <button class="control" id="clear">Очистить холст</button>
       <button class="control" id="train">Обучить</button>
-      <button class="control" disabled id="predict">Предсказать</button>
+      <button class="control" id="predict" disabled>Предсказать</button>
+      <button class="control" id="save">Сохранить данные</button>
+      <input type="file" id="load" accept="application/json">
     </div>
   </div>
   <script src="scripts/NeuralNetwork.js"></script>
