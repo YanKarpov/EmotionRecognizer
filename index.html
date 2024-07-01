@@ -12,21 +12,26 @@
     <h1 class="title">Emotion Classifier</h1>
   </header>
   <div id="wrapper">
-    <canvas width="400" height="400" id="paintField"></canvas>
-    <div id="controls">
-      <button class="control" id="happy">😀 0</button>
-      <button class="control" id="sad">🙁 0</button>
-      <button class="control" id="angry">😡 0</button>
-      <button class="control" id="surprised">😲 0</button>
-      <button class="control" id="clear">Очистить холст</button>
-      <button class="control" id="train">Обучить</button>
-      <button class="control" id="predict" disabled>Предсказать</button>
-      <button class="control" id="save">Сохранить данные</button>
-      <input type="file" id="load" accept="application/json">
+    <div id="left-controls">
+      <button class="control small" id="happy">😀 0</button>
+      <button class="control small" id="sad">🙁 0</button>
+      <button class="control small" id="angry">😡 0</button>
+      <button class="control small" id="surprised">😲 0</button>
     </div>
+    <canvas width="400" height="400" id="paintField"></canvas>
+    <div id="right-controls">
+      <button class="control" id="save">Сохранить данные для обучения</button>
+      <input type="file" id="load" accept="application/json" class="control">
+    </div>
+  </div>
+  <div id="bottom-controls">
+    <button class="control" id="clear">Очистить холст</button>
+    <button class="control" id="train">Обучить</button>
+    <button class="control" id="predict" disabled>Предсказать</button>
   </div>
   <script src="scripts/NeuralNetwork.js"></script>
   <script src="scripts/EmotionDrawing.js"></script>
 </body>
 </html>
+
 
