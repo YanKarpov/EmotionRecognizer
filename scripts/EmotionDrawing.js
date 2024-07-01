@@ -215,5 +215,3 @@ saveBtn.addEventListener("click", saveTrainingData); // Сохранение д�
 // Начальная настройка интерфейса
 updateInterface();
 clearCanvas();
-
-
