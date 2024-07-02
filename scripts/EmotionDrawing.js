@@ -7,8 +7,14 @@ const surprisedBtn = document.querySelector("#surprised");
 const trainBtn = document.querySelector("#train");
 const predictBtn = document.querySelector("#predict");
 const saveBtn = document.querySelector("#save");
-const loadInput = document.querySelector("#load");
 const colorPicker = document.querySelector("#colorPicker");
+const loadInput = document.querySelector("#load");
+const fileNameSpan = document.querySelector("#file-name");
+
+loadInput.addEventListener("change", (event) => {
+  const fileName = event.target.files[0] ? event.target.files[0].name : "Файл не выбран";
+  fileNameSpan.textContent = fileName;
+});
 
 // Контекст рисования на canvas
 const ctx = canvas.getContext("2d");

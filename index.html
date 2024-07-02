@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=deviceid th=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Emotion Classifier</title>
   <link rel="stylesheet" href="css/styles.css">
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
@@ -21,7 +21,11 @@
     <canvas width="400" height="400" id="paintField"></canvas>
     <div id="right-controls">
       <button class="control" id="save">Сохранить данные для обучения</button>
-      <input type="file" id="load" accept="application/json" class="control">
+      <div class="file-upload-wrapper">
+        <input type="file" id="load" accept="application/json" class="file-upload-input">
+        <label for="load" class="file-upload-label">Выберите файл</label>
+        <span id="file-name" class="file-upload-name">Файл не выбран</span>
+      </div>
       <input type="color" id="colorPicker" value="#00FF00" title="Выберите цвет">
     </div>
   </div>
@@ -34,5 +38,6 @@
   <script src="scripts/EmotionDrawing.js"></script>
 </body>
 </html>
+
 
 
