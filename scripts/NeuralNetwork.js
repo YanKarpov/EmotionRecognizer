@@ -1,7 +1,3 @@
-/**
- * Создает нейронную сеть для распознавания эмоций на изображениях 10x10 пикселей.
- * Модель состоит из сверточного слоя, слоя максимального пулинга, слоя выравнивания и полносвязного слоя для классификации.
- */
 const model = tf.sequential();
 
 model.add(
@@ -42,7 +38,10 @@ function preprocessDrawing(paintField) {
 async function trainModel(trainData) {
   // Преобразование данных обучения в тензоры
   const xs = tf.concat(trainData.map((d) => preprocessDrawing(d.paintField))); // Конкатенация всех рисунков в один тензор
-  const ys = tf.tensor2d(trainData.map((d) => d.label)); // Преобразование меток классов в 2D тензор
+  const ys = tf.tensor2d(trainData.map((d) => d.label), [trainData.length, 4]); // Преобразование меток классов в 2D тензор
+
+  // Открытие окна визуализации
+  const visualizationWindow = window.open('visualization.html');
 
   // Обучение модели
   await model.fit(xs, ys, {
@@ -50,6 +49,13 @@ async function trainModel(trainData) {
     callbacks: {
       onEpochEnd: (epoch, logs) => {
         console.log(`Эпоха ${epoch}: потеря = ${logs.loss.toFixed(4)}, точность = ${logs.acc.toFixed(4)}`); // Логирование результатов каждой эпохи
+
+        // Отправка данных в окно визуализации
+        visualizationWindow.postMessage({
+          epoch,
+          loss: logs.loss,
+          accuracy: logs.acc,
+        }, '*');
       },
     },
   });
