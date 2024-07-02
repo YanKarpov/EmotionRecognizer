@@ -41,7 +41,7 @@ async function trainModel(trainData) {
   const ys = tf.tensor2d(trainData.map((d) => d.label), [trainData.length, 4]); // Преобразование меток классов в 2D тензор
 
   // Открытие окна визуализации
-  const visualizationWindow = window.open('visualization.html');
+  const visualizationWindow = window.open('pages/graphs.html');
 
   // Обучение модели
   await model.fit(xs, ys, {
