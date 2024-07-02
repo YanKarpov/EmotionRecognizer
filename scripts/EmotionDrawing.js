@@ -140,17 +140,27 @@ const loadTrainingData = (event) => {
     try {
       const jsonData = e.target.result;
       const loadedData = JSON.parse(jsonData);
-      trainData.push(...loadedData);
+      const existingDataCount = trainData.length;
 
       loadedData.forEach((data) => {
-        if (data.label[0] === 1) happyCount++;
-        if (data.label[1] === 1) sadCount++;
-        if (data.label[2] === 1) angryCount++;
-        if (data.label[3] === 1) surprisedCount++;
+        const duplicate = trainData.some(
+          (d) => JSON.stringify(d.paintField) === JSON.stringify(data.paintField)
+        );
+        if (!duplicate) {
+          trainData.push(data);
+          if (data.label[0] === 1) happyCount++;
+          if (data.label[1] === 1) sadCount++;
+          if (data.label[2] === 1) angryCount++;
+          if (data.label[3] === 1) surprisedCount++;
+        }
       });
 
-      updateInterface();
-      alert("Данные обучения загружены!");
+      if (trainData.length > existingDataCount) {
+        updateInterface();
+        alert("Данные обучения загружены!");
+      } else {
+        alert("Все загруженные данные уже существуют в наборе данных!");
+      }
     } catch (error) {
       alert("Ошибка при загрузке данных: " + error.message);
     }
@@ -158,6 +168,7 @@ const loadTrainingData = (event) => {
 
   reader.readAsText(file);
 };
+
 
 loadInput.addEventListener("change", loadTrainingData);
 
