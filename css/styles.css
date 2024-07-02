@@ -127,12 +127,6 @@ header {
   background-color: #004d40;
 }
 
-.file-upload-input:focus + .file-upload-label {
-  outline: none;
-  background-color: #00695c;
-}
-
-/* Стили для названия файла */
 .file-upload-name {
   display: inline-block;
   margin-left: 10px;
