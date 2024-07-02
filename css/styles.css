@@ -209,6 +209,42 @@ header {
   background-color: #00796b;
 }
 
+#colorPicker {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+#colorPicker::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+#colorPicker::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+#colorPicker::-moz-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+#colorPicker:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+#colorPicker:active {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+}
+
+
 
 
 
