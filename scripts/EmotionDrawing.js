@@ -26,6 +26,7 @@ const paintField = new Array(100).fill(false);
 const trainData = [];
 
 let mouseDown = false;
+let touchActive = false;
 let happyCount = 0;
 let sadCount = 0;
 let angryCount = 0;
@@ -69,27 +70,43 @@ const drawSquare = (row, column, color) => {
 };
 
 /**
- * Обработчик события для рисования на canvas при движении мыши.
- * @param {MouseEvent} event - Событие мыши
+ * Обработчик события для рисования на canvas при движении мыши или сенсора.
+ * @param {number} offsetX - Смещение по оси X
+ * @param {number} offsetY - Смещение по оси Y
  */
-const draw = (event) => {
-  if (!mouseDown) return;
-
-  const offsetX = Math.min(Math.max(event.offsetX, 0), 399);
-  const offsetY = Math.min(Math.max(event.offsetY, 0), 399);
-
+const draw = (offsetX, offsetY) => {
   const rowIndex = Math.floor(offsetY / 40);
   const columnIndex = Math.floor(offsetX / 40);
   const arrayIndex = rowIndex * 10 + columnIndex;
 
-  if (
-    arrayIndex >= 0 &&
-    arrayIndex < paintField.length &&
-    !paintField[arrayIndex]
-  ) {
+  if (arrayIndex >= 0 && arrayIndex < paintField.length && !paintField[arrayIndex]) {
     paintField[arrayIndex] = true;
     drawSquare(rowIndex, columnIndex, selectedColor);
   }
+};
+
+/**
+ * Обработчик события для движения мыши по canvas.
+ * @param {MouseEvent} event - Событие мыши
+ */
+const handleMouseMove = (event) => {
+  if (!mouseDown) return;
+  const offsetX = Math.min(Math.max(event.offsetX, 0), 399);
+  const offsetY = Math.min(Math.max(event.offsetY, 0), 399);
+  draw(offsetX, offsetY);
+};
+
+/**
+ * Обработчик события для движения пальца по canvas.
+ * @param {TouchEvent} event - Сенсорное событие
+ */
+const handleTouchMove = (event) => {
+  if (!touchActive) return;
+  const touch = event.touches[0];
+  const rect = canvas.getBoundingClientRect();
+  const offsetX = Math.min(Math.max(touch.clientX - rect.left, 0), 399);
+  const offsetY = Math.min(Math.max(touch.clientY - rect.top, 0), 399);
+  draw(offsetX, offsetY);
 };
 
 const clearField = () => {
@@ -175,14 +192,16 @@ const loadTrainingData = (event) => {
   reader.readAsText(file);
 };
 
-
 loadInput.addEventListener("change", loadTrainingData);
 
-// Добавление обработчиков событий для взаимодействия с мышью и кнопками
+// Добавление обработчиков событий для взаимодействия с мышью и сенсорами
 document.addEventListener("mousedown", () => (mouseDown = true));
 document.addEventListener("mouseup", () => (mouseDown = false));
+document.addEventListener("touchstart", () => (touchActive = true));
+document.addEventListener("touchend", () => (touchActive = false));
 
-canvas.addEventListener("mousemove", draw);
+canvas.addEventListener("mousemove", handleMouseMove);
+canvas.addEventListener("touchmove", handleTouchMove);
 
 clearBtn.addEventListener("click", clearField);
 
@@ -236,3 +255,4 @@ colorPicker.addEventListener("input", (e) => {
 // Начальная настройка интерфейса
 updateInterface();
 clearCanvas();
+
