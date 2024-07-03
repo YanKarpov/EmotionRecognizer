@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Визуализация Обучения</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="../css/graphs.css">
 </head>
 <body>
-  <h2>Потери при Обучении</h2>
-  <canvas id="lossChart"></canvas>
-  
-  <h2>Точность при Обучении</h2>
-  <canvas id="accuracyChart"></canvas>
+  <div class="chart-container">
+    <h2>График обучения модели Emotion Classifier</h2>
+    <canvas id="combinedChart"></canvas>
+  </div>
 
   <script src="../scripts/visualization.js"></script>
 </body>
