@@ -6,7 +6,7 @@ const lossChart = new Chart(lossCtx, {
   data: {
     labels: [],
     datasets: [{
-      label: 'Training Loss',
+      label: 'Потеря при обучении',
       borderColor: 'rgba(255, 99, 132, 1)',
       backgroundColor: 'rgba(255, 99, 132, 0.2)',
       data: [],
@@ -17,13 +17,13 @@ const lossChart = new Chart(lossCtx, {
       x: {
         title: {
           display: true,
-          text: 'Epoch'
+          text: 'Эпоха'
         }
       },
       y: {
         title: {
           display: true,
-          text: 'Loss'
+          text: 'Потеря'
         }
       }
     }
@@ -35,7 +35,7 @@ const accuracyChart = new Chart(accuracyCtx, {
   data: {
     labels: [],
     datasets: [{
-      label: 'Training Accuracy',
+      label: 'Точность при обучении',
       borderColor: 'rgba(54, 162, 235, 1)',
       backgroundColor: 'rgba(54, 162, 235, 0.2)',
       data: [],
@@ -46,13 +46,13 @@ const accuracyChart = new Chart(accuracyCtx, {
       x: {
         title: {
           display: true,
-          text: 'Epoch'
+          text: 'Эпоха'
         }
       },
       y: {
         title: {
           display: true,
-          text: 'Accuracy'
+          text: 'Точность'
         }
       }
     }
