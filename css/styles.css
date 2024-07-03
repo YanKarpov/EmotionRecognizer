@@ -244,6 +244,109 @@ header {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 }
 
+/* Media Queries */
+@media (max-width: 768px) {
+  .title {
+    font-size: 28px;
+  }
+
+  #wrapper {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  #paintField {
+    width: 90vw;
+    max-width: 400px;
+    height: 90vw;
+    max-height: 400px;
+    margin: 10px 0;
+  }
+
+  #left-controls, #right-controls {
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  #bottom-controls {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .control {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .control.small {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .file-upload-wrapper {
+    max-width: 300px;
+  }
+
+  .file-upload-label {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .file-upload-name {
+    font-size: 12px;
+  }
+
+  #colorPicker {
+    width: 50px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 24px;
+  }
+
+  #paintField {
+    width: 80vw;
+    height: 80vw;
+  }
+
+  .control {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .control.small {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .file-upload-wrapper {
+    max-width: 250px;
+  }
+
+  .file-upload-label {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .file-upload-name {
+    font-size: 10px;
+  }
+
+  #colorPicker {
+    width: 40px;
+    height: 30px;
+  }
+}
+
+
 
 
 
